@@ -29,9 +29,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 Route::get('/listeapprenant', [HomeController::class, 'listeapprenant'])->name('listeapprenant');
+Route::get('inscriptioncours', [HomeController::class, 'inscriptioncours'])->name('inscriptioncours');
+Route::get('/apprenants/approuvee/{inscriptioncours}', [HomeController::class, 'approuvee'])->name('inscriptioncours.approuvee');
+Route::get('/apprenants/attente/{inscriptioncours}', [HomeController::class, 'attente'])->name('inscriptioncours.attente');
 Route::get('/apprenants/activate/{apprenant}', [HomeController::class, 'activate'])->name('apprenants.activate');
 Route::get('/apprenants/deactivate/{apprenant}', [HomeController::class, 'deactivate'])->name('apprenants.deactivate');
 
 Route::get('/listereservation', [ReservationController::class, 'listereservation'])->name('listereservation');
+Route::get('reservationcours', [ReservationController::class, 'reservationcours'])->name('reservationcours');
 Route::get('/reservations/{id}/activate', [ReservationController::class, 'activate'])->name('reservations.activate');
 Route::get('/reservations/{id}/deactivate', [ReservationController::class, 'deactivate'])->name('reservations.deactivate');

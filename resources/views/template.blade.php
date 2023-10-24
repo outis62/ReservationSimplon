@@ -28,20 +28,30 @@
                     <li class="menu-item-has-children dropdown">
                         <a href="#"> <i class="menu-icon fa fa-tachometer"></i>Accueil</a>
                     </li>
+                    <h5 class="text-danger">Gestion Apprenant.e.s</h5>
                     <li class="menu-item-has-children dropdown">
-                        <a href="{{route('listeapprenant')}}"> <i class="menu-icon fa fa-laptop"></i>Apprenant.e.s</a>
+                        <a href="{{route('inscriptioncours')}}"> <i class="menu-icon fa fa-laptop"></i>Inscriptions en cours</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Reservation</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li><i class="fa fa-table"></i><a href="tables-basic.html">17h à 20h du lundi au vendredi</a></li>
-                            <li><i class="fa fa-table"></i><a href="tables-data.html">20h le samedi et le dimanche</a></li>
-                        </ul>
+                        <a href="{{route('listeapprenant')}}"> <i class="menu-icon fa fa-laptop"></i>Liste Apprenant.e.s</a>
+                    </li>
+                    <h5 class="text-danger">Gestion Reservations</h5>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="{{route('reservationcours')}}"> <i class="menu-icon fa fa-th"></i>Reservations en cours</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
                         <a href="{{route('listereservation')}}"> <i class="menu-icon fa fa-th"></i>Liste des reservations</a>
                     </li>
+                    <h5 class="text-danger">Raccourcis</h5>
+                    <li class="menu-item-has-children dropdown">
+                        <a href="#"> <i class="menu-icon fa fa-table"></i>Faire une reservation</a>
+                    </li>
+                    <li class="nav-item mt-4">
+            <a href="{{route('logout')}}" class="btn" style="background-color:#A3333D!important; border-radius: 10px!important" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+              <p class="text-white"> Déconnexion </p>
+            </a>
+          </li>
                 </ul>
             </div>
         </nav>
@@ -50,7 +60,7 @@
         <header id="header" class="header">
             <div class="header-menu">
                 <div class="col-sm-7">
-                    <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a>
+                    <!-- <a id="menuToggle" class="menutoggle pull-left"><i class="fa fa fa-tasks"></i></a> -->
                     <div class="header-left">
                         <button class="search-trigger"><i class="fa fa-search"></i></button>
                         <div class="form-inline">
@@ -63,18 +73,18 @@
                     </div>
                 </div>
                 <div class="col-sm-5">
-                    <div class="user-area dropdown float-right">
+                <div class="user-area dropdown float-right">
 
         <a class="nav-link" data-toggle="dropdown" href="#">
-<i class="fa fa-user" style="color: black;"></i><span class="pl-2" style="color: black;">{{ Auth::user()->name }}</span>
+            <i class="fa fa-user" style="color: black;"></i><span class="pl-2" style="color: black;">{{ Auth::user()->name }}</span>
         </a>
-<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
           <a href="{{ route('profile.edit') }}" class="dropdown-item">Profil</a>
           <div class="dropdown-divider"></div>
           <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">Déconnexion</a>
-<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
-</div>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
+        </div>
 
                     </div>
                 </div>
@@ -88,6 +98,7 @@
     <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="{{asset('DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js')}}"></script>
     <script src="assets/js/main.js"></script>
-    <!-- <script src="{{asset('js/appli.js')}}"></script> -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="{{asset('js/appli.js')}}"></script>
 </body>
 </html>

@@ -18,6 +18,11 @@ class ReservationController extends Controller
             'reservation' => $reservation,
         ]);
     }
+    public function reservationcours()
+    {
+        $reservation = Reservation::all();
+        return view('forme.reservationcours', ['reservation' => $reservation]);
+    }
     public function listereservationapi()
     {
         $reservation = Reservation::all();

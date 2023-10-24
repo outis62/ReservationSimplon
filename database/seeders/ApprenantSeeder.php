@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Apprenant;
+use App\Models\Inscriptioncours;
 use Illuminate\Database\Seeder;
 
 class ApprenantSeeder extends Seeder
@@ -12,17 +12,12 @@ class ApprenantSeeder extends Seeder
      */
     public function run(): void
     {
-        Apprenant::create([
-            'nom' => 'DAO',
-            'prenom' => 'Aline',
-            'email' => 'dao@gmail.com',
+        Inscriptioncours::create([
+            'nom' => 'DA',
+            'prenom' => 'Ali',
+            'email' => 'da@gmail.com',
             'role' => 'apprenant',
         ]);
-        Apprenant::create([
-            'nom' => 'DAFFY',
-            'prenom' => 'Duck',
-            'email' => 'daffy@gmail.com',
-            'role' => 'apprenant',
-        ]);
+
     }
 }

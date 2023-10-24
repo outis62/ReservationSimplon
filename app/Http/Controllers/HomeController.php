@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Apprenant;
+use App\Models\Inscriptioncours;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -22,10 +23,21 @@ class HomeController extends Controller
             'apprenant' => $apprenant,
         ]);
     }
-    public function listeapprenantapi()
+    public function inscriptioncours()
     {
-        $apprenant = Apprenant::all();
-        return response()->json($apprenant);
+        $apprenant = Inscriptioncours::all();
+        return view('forme.inscriptioncours', ['apprenant' => $apprenant]);
+    }
+    public function approuvee(Inscriptioncours $apprenant)
+    {
+        $apprenant->update(['status' => 1]);
+        return redirect()->route('inscriptioncours')->with('success', 'Apprenant activé avec succès.');
+    }
+
+    public function attente(Inscriptioncours $apprenant)
+    {
+        $apprenant->update(['status' => 0]);
+        return redirect()->route('inscriptioncours')->with('success', 'Apprenant désactivé avec succès.');
     }
     public function activate(Apprenant $apprenant)
     {
