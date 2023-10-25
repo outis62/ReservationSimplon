@@ -28,16 +28,28 @@ class HomeController extends Controller
         $apprenant = Inscriptioncours::all();
         return view('forme.inscriptioncours', ['apprenant' => $apprenant]);
     }
-    public function approuvee(Inscriptioncours $apprenant)
+    public function validerInscription($apprenantId)
     {
-        $apprenant->update(['status' => 1]);
-        return redirect()->route('inscriptioncours')->with('success', 'Apprenant activé avec succès.');
-    }
+        // Étape 1 : Modification du Statut
+        InscriptionCours::where('id', $apprenantId)->update(['status' => 'inscrit']);
 
-    public function attente(Inscriptioncours $apprenant)
-    {
-        $apprenant->update(['status' => 0]);
-        return redirect()->route('inscriptioncours')->with('success', 'Apprenant désactivé avec succès.');
+        // Étape 2 : Déplacement de l'Apprenant
+        $inscription = InscriptionCours::where('id', $apprenantId)->first();
+
+        Apprenant::create([
+            'nom' => $inscription->nom,
+            'prenom' => $inscription->prenom,
+            'email' => $inscription->email,
+            'password' => $inscription->password,
+            'role' => $inscription->role,
+            'status' => $inscription->status,
+            'apprenant_id' => $inscription->id,
+        ]);
+
+        // Suppression de l'entrée de la table d'attente
+        $inscription->delete();
+
+        return redirect()->route('inscriptioncours')->with('success', 'Inscription validée avec succès.');
     }
     public function activate(Apprenant $apprenant)
     {

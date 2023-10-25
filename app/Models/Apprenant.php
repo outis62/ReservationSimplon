@@ -3,16 +3,20 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Apprenant extends Model
+class Apprenant extends Authenticatable
 {
-    use HasFactory;
+
+    use Notifiable, HasFactory;
+    protected $guard = 'apprenant';
     protected $fillable = [
         'nom',
         'prenom',
         'email',
         'role',
+        'password',
         'status',
     ];
     public function updateStatus($status)

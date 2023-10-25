@@ -17,29 +17,24 @@
           </tr>
         </thead>
         <tbody>
+    @php
+        $compteur = 1;
+    @endphp
+    @foreach ($apprenant as $apprenant)
+        <tr>
+            <td>{{ $compteur }}</td>
+            <td>{{ $apprenant->nom }}</td>
+            <td>{{ $apprenant->prenom }}</td>
+            <td>{{ $apprenant->email }}</td>
+            <td>
+                <a href="{{ route('valider_inscription', ['apprenantId' => $apprenant->id]) }}" class="btn btn-success">Valider Inscription</a>
+            </td>
+        </tr>
         @php
-            $compteur = 1;
+            $compteur++;
         @endphp
-        @foreach ($apprenant as $apprenant)
-            <tr>
-                <td>{{ $compteur }}</td>
-                <td>{{ $apprenant->nom }}</td>
-                <td>{{ $apprenant->prenom }}</td>
-                <td>{{ $apprenant->email }}</td>
-                <td>
-                  @if ($apprenant->status == 1)
-                  <a href="{{ route('inscriptioncours.attente', $apprenant) }}" class="btn btn-danger">En attente</i></a>
-                  @else
-                  <a href="{{ route('inscriptioncours.approuvee', $apprenant) }}" class="btn btn-success">Valider</a>
-                  @endif
-                </td>
-
-            </tr>
-                @php
-                  $compteur++;
-                @endphp
-                @endforeach
-        </tbody>
+    @endforeach
+</tbody>
       </table>
     </div>
   </div>

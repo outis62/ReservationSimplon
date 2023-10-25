@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Inscriptioncours;
+use App\Models\Apprenant;
 use Illuminate\Database\Seeder;
 
 class ApprenantSeeder extends Seeder
@@ -12,11 +12,11 @@ class ApprenantSeeder extends Seeder
      */
     public function run(): void
     {
-        Inscriptioncours::create([
-            'nom' => 'DA',
-            'prenom' => 'Ali',
-            'email' => 'da@gmail.com',
-            'role' => 'apprenant',
+        Apprenant::create([
+            'nom' => 'ZABRE',
+            'prenom' => 'Boureima',
+            'email' => 'zabre@gmail.com',
+            'password' => bcrypt('zabrepass'),
         ]);
 
     }

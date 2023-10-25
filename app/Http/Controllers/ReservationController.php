@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Reservation;
+use App\Models\Reservationcours;
 use Illuminate\Http\Request;
 
 class ReservationController extends Controller
@@ -20,7 +21,7 @@ class ReservationController extends Controller
     }
     public function reservationcours()
     {
-        $reservation = Reservation::all();
+        $reservation = Reservationcours::all();
         return view('forme.reservationcours', ['reservation' => $reservation]);
     }
     public function listereservationapi()

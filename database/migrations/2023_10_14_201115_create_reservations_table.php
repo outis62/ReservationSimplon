@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('heure_reservation');
             $table->string('jour_reservation');
-            $table->bigInteger('id_apprenant');
-            $table->boolean('status')->default(1);
+            $table->bigInteger('id_apprenant')->nullable();
+            $table->boolean('status');
             $table->timestamps();
         });
     }

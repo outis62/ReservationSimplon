@@ -45,4 +45,13 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    /**
+     * Handle custom authentication logic.
+     */
+    protected function guard()
+    {
+        return Auth::guard('apprenant');
+    }
+
 }

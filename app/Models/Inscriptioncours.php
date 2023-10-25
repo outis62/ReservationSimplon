@@ -15,8 +15,9 @@ class Inscriptioncours extends Model
         'role',
         'status',
     ];
-    public function updateStatus($status)
-    {
-        $this->update(['approuvee' => $status]);
-    }
+
+    protected $casts = [
+
+        'password' => 'hashed',
+    ];
 }

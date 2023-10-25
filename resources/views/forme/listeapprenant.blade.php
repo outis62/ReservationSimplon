@@ -4,7 +4,7 @@
 <section>
 <div class="container p-4">
     <div class="card-container w-100">
-      <h2 class='mb-3 text-center'>LISTE DES APPRENANT.E.S</h2>
+      <h2 class='mb-3 text-center'>Liste des apprenant.e.s</h2>
       <table id="dtBasicExample" class="table table-striped table-hover pt-3" width="100%">
         <thead>
           <tr>

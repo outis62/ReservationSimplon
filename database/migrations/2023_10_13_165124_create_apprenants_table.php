@@ -16,7 +16,9 @@ return new class extends Migration
             $table->string('nom');
             $table->string('prenom');
             $table->string('email')->unique();
+            $table->string('password');
             $table->string('role');
+            $table->unsignedBigInteger('apprenant_id')->nullable();
             $table->timestamps();
         });
     }

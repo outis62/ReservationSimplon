@@ -11,14 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('inscriptioncours', function (Blueprint $table) {
+        Schema::create('reservationcours', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('prenom');
-            $table->string('email')->unique();
-            $table->string('password');
-            $table->string('role');
-            $table->string('status')->default('attente');
+            $table->string('heure_reservation');
+            $table->string('jour_reservation');
+            $table->bigInteger('id_apprenant');
+            $table->boolean('status')->default('attente');
             $table->timestamps();
         });
     }
@@ -28,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('inscriptioncours');
+        Schema::dropIfExists('reservationcours');
     }
 };
